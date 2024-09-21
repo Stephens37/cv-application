@@ -1,0 +1,40 @@
+Create components for:
+    - General info
+    - Educational experience
+    - Practical experience
+
+To have the edit and submit button in the parent file would require me to overwrite the css for each component.
+
+Perhaps by using !important? No
+
+By using display: none for the input boxes, and submitting the info to divs that will take the place of the input boxes and will have a display: grid setting? Possibly, but I think there is a way to do so with props and state.
+
+    - Use jsx to layout each info area
+    - Set up an infoMain prop that is equal to an input element
+    - Pass this prop to each of the jsx elements as each element's child
+    - Create a submit and edit button 
+    - Submission of the form will set the new state of each info area to be the value of each elements corresponding input (or the text)
+    - Clicking the edit button will do the inverse and set the state back to the input boxes
+
+function inputCreation () {
+    return (
+        <>
+            const infoInput = document.createElement("input")
+            infoInput.setAttribute("classList", "infoInput")
+        </>
+    )
+}
+
+function info () {
+    return (
+        <>
+            <div classList ="info-blocks">
+                <div classList="info-block name">
+                    infoMain
+                </div>
+            </div>
+            <button>edit</button>
+            <button>submit</button>
+        </>
+    )
+}

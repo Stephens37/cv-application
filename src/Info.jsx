@@ -1,6 +1,6 @@
-import './App.css'
+/*import './info.css'
 
-/*function InputTitle (props) {
+function InputTitle (props) {
   const inputTitleClass = 'inputTitleClass'
   const inputTitleStyle = {
     className: `${inputTitleClass} ${props.text.toLowerCase()}`,
@@ -11,21 +11,21 @@ import './App.css'
       <div style={inputTitleStyle}>{props.text}</div>
     </>
   )
-}*/
+}
 
-/*
+
   - create separate props for both the input and div with text
   - set the default infoArea prop to be the input
   - include the div prop as well in the arguments
-*/
 
-/* function InfoArea (props) {
+
+function InfoArea (props) {
   divProp = <div className='submittedName'>{inputProp.value}</div>
   inputProp = <input className='inputClass'></input>
   return (
     <div className='infoArea'>{infoSpace}</div>
   ) 
-} */
+} 
 
 const InfoArea = ({ infoElement }) => {
   return (
@@ -39,10 +39,10 @@ InfoArea.defaultProps = {
   infoElement: <input className='InputClass'></input>
 }
 
-/*
+
 - if the value of the infoSpace in InfoArea does not equal divProp return an error
 - else change the state of the button area and make it into the 
-*/
+
 
 function SubmitButton (InfoArea) {
   const [info, setInfo ] = useState(InfoArea.infoElement)
@@ -66,7 +66,7 @@ function EditButton (InfoArea) {
   )
 }
 
-export default function App () {
+export default function Info () {
   <>
     <div className='InputInfo'>
       <div className='BasicInfo'>
@@ -86,7 +86,6 @@ export default function App () {
       </div>
       
       <div className='EduInfo'>
-        <
         <div className='InputContainer'>
           <div className='InputTitle School'>School</div>
           <Input></Input>
@@ -108,11 +107,6 @@ export default function App () {
       <Input text='Degree'></Input>
       <Input text='Year'></Input>
     </div>
-    <div className='buttons'>
-      <div className='buttonFlex'>
-        <EditButton></EditButton>
-        <SubmitButton></SubmitButton>
-      </div>
-    </div>
   </>
 }
+*/

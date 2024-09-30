@@ -68,7 +68,7 @@ function AddNew () {
     )
 }
 
-export default function App () {
+export default function JobSection () {
     return (
         <>
             <div className='PracticalExp'>Practical Experience</div>

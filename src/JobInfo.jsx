@@ -27,22 +27,22 @@ function JobInfo () {
         <div className='JobInfo'>
             <div className='InputContainer'>
                 <div className='InputTitle Company CompanyTitle'>Company</div>
-                <input type='text' className='School SchoolInput'></input>
+                <input type='text' className='Company CompanyInput JobInput'></input>
             </div>
             <div className='InputContainer'>
                 <div className='InputTitle Position PositionTitle'>Position Title</div>
-                <input type='text' className='Degree DegreeInput'></input>
+                <input type='text' className='Position PositionInput JobInput'></input>
             </div>
             <div className='InputContainer'>
                 <div className='InputTitle Responsibilities RespTitle'>Main Responsibilities</div>
-                <input type='text' className='Responsibilities RespInput'></input>
+                <input type='text' className='Responsibilities RespInput JobInput'></input>
             </div>
             <div className='InputContainer TimeWorkedGrid'>
                 <div className='StartDateGrid'>
                     <div className='InputTitle TimeWorked StartTitle'>Start Date</div>
-                    <TimeWorked className='TimeWorked StartTime'></TimeWorked>
+                    <TimeWorked className='TimeWorked StartTime JobInput StartTimeInput'></TimeWorked>
                     <div className='InputTitle TimeWorked EndTitle'>End Date</div>
-                    <TimeWorked className='TimeWorked EndTime'></TimeWorked>
+                    <TimeWorked className='TimeWorked EndTime JobInput EndTimeInput'></TimeWorked>
                 </div>
             </div>
         </div>

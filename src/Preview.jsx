@@ -9,40 +9,74 @@ function PreviewContact () {
         <div className='ContactPreview'>
             <div className='NamePreview'>{document.querySelector('.NameInput').value}</div>
             <div className='EmailPreview'>{document.querySelector('.EmailInput').value}</div>
-            <div className='EmailPreview'>{document.querySelector('.NumberInput').value}</div>
+            <div className='NumberPreview'>{document.querySelector('.NumberInput').value}</div>
         </div>
     )
 }
 
-function CreateSection(SectionClass, InfoText, PreviewArea) {
-    const Section = document.createElement('div')
-    Section.className(`${SectionClass}`)
-    Section.innerText = InfoText.value
-    PreviewArea.appendChild(`${Section}`)
+function CreateSection(Inputs, SectionClass, PreviewArea) {
+    Inputs.forEach(Input => {
+        const Section = document.createElement('div')
+        Section.className(`${SectionClass}`)
+        Section.innerText = Input.value
+        PreviewArea.appendChild(Section)
+    })
 }
-
-function PreviewEdu ()
-    const Degree = document.querySelectorAll(.DegreeInfo)
-    forEach(Degree) {
-        CreateSection()
-    }
-    
-*/
-
-const EduPreview = <div className='EduPreview'></div>
 
 function PreviewEdu () {
     return (
         <div className='EduPreview'>
-
+            <div className='SchoolPreview'></div>
+            <div className='DegreePreview'></div>
+            <div className='YearGradPreview'></div>
         </div>
     )
 }
 
+function PreviewJob () {
+    return (
+        <div className='JobPreview'>
+            <div className='CompanyPreview'></div>
+            <div className='PositionPreview'></div>
+            <div className='RespPreview'></div>
+            <div className='StartDatePreview'></div>
+            <div className='EndDatePreview'></div>
+        </div>
+    )
+}
 
+const SchoolInput = document.querySelectorAll('.SchoolInput')
+const DegreeInput = document.querySelectorAll('.DegreeInput')
+const YearInput = document.querySelectorAll('.YearInput')
+
+const CompanyInput = document.querySelectorAll('.CompanyInput')
+const PositionInput = document.querySelectorAll('.PositionInput')
+const RespInput = document.querySelectorAll('.RespInput')
+
+const StartTimeInput = document.querySelectorAll('.StartTimeInput')
+const EndTimeInput = document.querySelectorAll('.EndTimeInput')
+
+const InputData = [
+    { Inputs: SchoolInput, SectionClass: '.SchoolPrevElement', PreviewArea: '.SchoolPreview' },
+    { Inputs: DegreeInput, SectionClass: '.DegreePrevElement', PreviewArea: '.DegreePreview' },
+    { Inputs: YearInput, SectionClass: '.YearPrevElement', PreviewArea: '.YearPreview' },
+    { Inputs: CompanyInput, SectionClass: '.CompanyPrevElement', PreviewArea: '.CompanyPreview' },
+    { Inputs: PositionInput, SectionClass: '.PositionPrevElement', PreviewArea: '.PositionPreview' },
+    { Inputs: RespInput, SectionClass: '.RespPrevElement', PreviewArea: '.RespPreview' },
+    { Inputs: StartTimeInput, SectionClass: '.StartTimePrevElement', PreviewArea: '.StartTimePreview' },
+    { Inputs: EndTimeInput, SectionClass: '.EndTimePrevElement', PreviewArea: '.EndTimePreview' },
+]
+
+InputData.forEach(({Inputs, SectionClass, PreviewArea}) => {
+    CreateSection(Inputs, SectionClass, PreviewArea)
+})
 
 export default function Preview () {
     return (
-        <PreviewContact></PreviewContact>
+        <>
+            <PreviewContact></PreviewContact>
+            <PreviewEdu></PreviewEdu>
+            <PreviewJob></PreviewJob>
+        </>
     )
 }

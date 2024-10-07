@@ -9,7 +9,7 @@ import './edu-info.css'
 */
 function EduInfo () {
     return (
-        <div className='eduInfo'>
+    <div className='eduInfo'>
         <div className='inputContainer'>
             <div className='inputTitle school schoolTitle'>School</div>
             <input type='text' className='school schoolInput eduInput'></input>

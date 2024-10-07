@@ -23,10 +23,7 @@ if (SubmitButton.onclick() === true) {
 }
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <div className='editArea'>
-      <ContactInfo className='contactInfo'></ContactInfo>
-      <EduInfo className='eduInfo'></EduInfo>
-      <JobInfo className='jobInfo'></JobInfo>
+    <div className='mainArea'>
     </div>
     <Preview></Preview>
   </StrictMode>,

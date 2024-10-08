@@ -2,6 +2,7 @@ import './buttons.css'
 import useState from 'react'
 import InputModules from './inputModules.jsx'
 import Preview from './preview.jsx'
+import { gatherInputs } from './preview.jsx'
 
 /*
     - group all 3 info input files into one module with an over-arching div
@@ -16,19 +17,21 @@ import Preview from './preview.jsx'
 //need to also think about how I will add the inputted info to my preview elements
 
 const mainArea = document.querySelector('.mainArea')
+const [info, setInfo ] = useState(<InputModules />)
+mainArea.appendChild(info)
 
-export default function Button () {
-    const [info, setInfo ] = useState(<InputModules />)
-    const button = document.createElement('button')
-    button.className = 'submitEditButton'
-    button.innerText = 'Submit'
-
-    if (button.addEventListener('click') === true && info(<Preview />)  === false) {
+function changeDisplayState () {
+    const button = document.querySelector('.submitEditButton')
+    if (info === <InputModules />) {
+        gatherInputs()
         setInfo(<Preview />)
         button.innerText = 'Edit'
-    } else if (button.addEventListener('click') === true && info(<InputModules />)  === false) {
+    } else if (info === <Preview />) {
         setInfo(<InputModules />)
         button.innerText = 'Submit'
     }
-    return button
+}
+
+export default function Button () {
+    return (<button className='submitEditButton' onClick={changeDisplayState}>Submit</button>)
 }

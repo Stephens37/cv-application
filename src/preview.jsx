@@ -14,12 +14,12 @@ function PreviewContact () {
     )
 }
 
-function CreateSection(inputArg, sectionClassArg, previewAreaArg) {
-    Inputs.forEach(Input => {
-        const Section = document.createElement('div')
-        Section.className(`${SectionClass}`)
-        Section.innerText = Input.value
-        PreviewArea.appendChild(Section)
+function CreateSection(inputsArg, sectionClassArg, previewAreaArg) {
+    inputsArg.forEach(input => {
+        const section = document.createElement('div')
+        section.className(`${sectionClassArg}`)
+        section.innerText = input
+        previewAreaArg.appendChild(section)
     })
 }
 
@@ -45,31 +45,35 @@ function PreviewJob () {
     )
 }
 
-const schoolInput = document.querySelectorAll('.schoolInput')
-const degreeInput = document.querySelectorAll('.degreeInput')
-const yearInput = document.querySelectorAll('.yearInput')
+export function gatherInputs () {
+    const schoolInput = document.querySelectorAll('.schoolInput')
+    const degreeInput = document.querySelectorAll('.degreeInput')
+    const yearInput = document.querySelectorAll('.yearInput')
 
-const companyInput = document.querySelectorAll('.companyInput')
-const positionInput = document.querySelectorAll('.positionInput')
-const respInput = document.querySelectorAll('.respInput')
+    const companyInput = document.querySelectorAll('.companyInput')
+    const positionInput = document.querySelectorAll('.positionInput')
+    const respInput = document.querySelectorAll('.respInput')
 
-const startTimeInput = document.querySelectorAll('.startTimeInput')
-const endTimeInput = document.querySelectorAll('.endTimeInput')
+    const startTimeInput = document.querySelectorAll('.startTimeInput')
+    const endTimeInput = document.querySelectorAll('.endTimeInput')
 
-const inputData = [
-    { inputs: schoolInput, sectionClass: '.schoolPrevElement', previewArea: '.schoolPreview' },
-    { inputs: degreeInput, sectionClass: '.degreePrevElement', previewArea: '.degreePreview' },
-    { inputs: yearInput, sectionClass: '.yearPrevElement', previewArea: '.yearPreview' },
-    { inputs: companyInput, sectionClass: '.companyPrevElement', previewArea: '.companyPreview' },
-    { inputs: positionInput, sectionClass: '.positionPrevElement', previewArea: '.positionPreview' },
-    { inputs: respInput, sectionClass: '.respPrevElement', previewArea: '.respPreview' },
-    { inputs: startTimeInput, sectionClass: '.startTimePrevElement', previewArea: '.startTimePreview' },
-    { inputs: endTimeInput, sectionClass: '.endTimePrevElement', previewArea: '.endTimePreview' },
-]
+    const inputData = [
+        { inputs: schoolInput, sectionClass: '.schoolPrevElement', previewArea: '.schoolPreview' },
+        { inputs: degreeInput, sectionClass: '.degreePrevElement', previewArea: '.degreePreview' },
+        { inputs: yearInput, sectionClass: '.yearPrevElement', previewArea: '.yearPreview' },
+        { inputs: companyInput, sectionClass: '.companyPrevElement', previewArea: '.companyPreview' },
+        { inputs: positionInput, sectionClass: '.positionPrevElement', previewArea: '.positionPreview' },
+        { inputs: respInput, sectionClass: '.respPrevElement', previewArea: '.respPreview' },
+        { inputs: startTimeInput, sectionClass: '.startTimePrevElement', previewArea: '.startTimePreview' },
+        { inputs: endTimeInput, sectionClass: '.endTimePrevElement', previewArea: '.endTimePreview' },
+    ]
 
-inputData.forEach(({inputs, sectionClass, previewArea}) => {
-    CreateSection(inputs, sectionClass, previewArea)
-})
+    inputData.forEach(({inputs, sectionClass, previewArea}) => {
+        CreateSection(inputs, sectionClass, previewArea)
+    })
+}
+
+
 
 export default function Preview () {
     return (

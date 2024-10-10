@@ -1,0 +1,9 @@
+.eduArea {
+    display: grid;
+}
+
+.eduInfo {
+    display: flex;
+    justify-content: space-evenly;
+}
+

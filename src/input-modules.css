@@ -1,0 +1,17 @@
+.inputModules {
+    display: grid;
+    grid-template-columns: 1;
+    grid-template-rows: 1fr repeat(2 / 3fr)
+}
+
+.contactInfoComp {
+    grid-row: 1;
+}
+
+.eduSectionComp {
+    grid-row: 2;
+}
+
+.jobSectionComp {
+    grid-row: 3;
+}

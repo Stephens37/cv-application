@@ -22,16 +22,17 @@ import { gatherInputs } from './preview.jsx'
     - have this area change state whenever the button is clicked
     - need to both add this to my main jsx file for css layout purposes
     as well as have it available as a DOM element for rendering it
-    -+
+    - why don't I just import the main area module and add it to the main root
+    - 
 */
 
-function MainAreaComp () {
+export function MainArea () {
     return (<div className='mainAreaComp'></div>)
 }
 
-const mainArea = document.createElement('div')
-mainArea.className = '.mainArea'
-const mainAreaRoot = createRoot(mainArea)
+const mainAreaDiv = document.createElement('div')
+mainAreaDiv.setAttribute('id', 'mainAreaDiv')
+const mainAreaRoot = createRoot(mainAreaDiv)
 mainAreaRoot.render(<InputModules />)
 
 function changeDisplayState () {
@@ -52,3 +53,6 @@ function changeDisplayState () {
 export default function Button () {
     return (<button className='submitEditButton' onClick={changeDisplayState}>Submit</button>)
 }
+
+
+//FIGURE OUT HOW TO MAKE MAIN AREA A COMPONENT TO BE USED IN THE MAIN FILE AS WELL AS A DOM ELEMENT THAT IS RENDERABLE

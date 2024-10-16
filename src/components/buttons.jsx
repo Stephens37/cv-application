@@ -30,10 +30,26 @@ export function MainArea () {
     return (<div className='mainAreaComp'></div>)
 }
 
-const mainAreaDiv = document.createElement('div')
+/* const mainAreaDiv = document.createElement('div')
 mainAreaDiv.setAttribute('id', 'mainAreaDiv')
 const mainAreaRoot = createRoot(mainAreaDiv)
 mainAreaRoot.render(<InputModules />)
+const mainAreaCompDiv = document.querySelector('.mainAreaComp')
+mainAreaCompDiv.appendChild(mainAreaDiv) */
+
+const mainAreaDiv = document.createElement('div')
+mainAreaDiv.setAttribute('id', 'mainAreaDiv')
+document.body.appendChild(mainAreaDiv)
+
+setTimeout(() => {
+    const mainAreaCompDiv = document.querySelector('.mainAreaComp')
+    if (mainAreaCompDiv) {
+        console.log('mainAreaCompDiv exists:', mainAreaCompDiv)
+        mainAreaCompDiv.appendChild(mainAreaDiv)
+    } else {
+        console.error('.mainAreaComp not found')
+    }
+}, 0);
 
 function changeDisplayState () {
     const [info, setInfo] = useState(<InputModules />)
@@ -54,5 +70,22 @@ export default function Button () {
     return (<button className='submitEditButton' onClick={changeDisplayState}>Submit</button>)
 }
 
+
+/*function DisplayButton () {
+    const [info, setInfo] = useState(<InputModules />)
+    const button = <button className='submitEditButton' onClick={changeDisplayState}>Submit</button>
+    if (info === <InputModules />) {
+        gatherInputs()
+        setInfo(<Preview />)
+        button.innerText = 'Edit'
+    } else if (info === <Preview />) {
+        setInfo(<InputModules />)
+        button.innerText = 'Submit'
+    }
+    return button
+}
+
+export default DisplayButton
+*/
 
 //FIGURE OUT HOW TO MAKE MAIN AREA A COMPONENT TO BE USED IN THE MAIN FILE AS WELL AS A DOM ELEMENT THAT IS RENDERABLE

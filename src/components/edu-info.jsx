@@ -32,6 +32,19 @@ function EduArea () {
     )
 }
 
+/*
+    const eduInfoArr = [dip1, dip2, ...]
+    function addPart () {
+        all info.remove
+        for (let i = 0; i < eduInfoArr.length; i++)  {
+        if(eduInfoArr[i]).style.gridrow = i {
+            continue loop
+        } else {
+            eduInfoArr[i].style.gridrow = i
+         }
+    }
+*/
+
 function AddNew () {
     
     const handleClick = () => {
@@ -48,7 +61,7 @@ function AddNew () {
 export default function EduSection () {
     return (
         <>
-            <div className='practicalExp'>Practical Experience</div>
+            <div className='practicalExp'>Education</div>
             <AddNew></AddNew>
             <EduArea></EduArea>
         </>

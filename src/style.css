@@ -2,18 +2,3 @@
   height: 100%;
   width: auto;
 }
-
-.mainGrid {
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-template-rows: 9fr 1fr;
-  justify-content: center;
-}
-
-.mainAreaComp {
-  grid-row: 1;
-}
-
-.buttonComp {
-  grid-row: 2;
-}

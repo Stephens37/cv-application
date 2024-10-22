@@ -1,0 +1,18 @@
+.mainGrid {
+    display: grid;
+    grid-template-columns: 4fr 1fr 4fr;
+    grid-template-rows: 9fr 1fr;
+    justify-content: center;
+  }
+  
+  .mainAreaComp {
+    grid-row: 1;
+    grid-column: 1 / span 3;
+  }
+  
+  .buttonComp {
+    grid-row: 2;
+    grid-column: 2;
+    height: 50px;
+    width: 100px;
+  }

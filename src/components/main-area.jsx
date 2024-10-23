@@ -1,3 +1,3 @@
-export default function MainArea () {
-    return (<div className='mainAreaComp'></div>)
+export default function MainArea ({className, children}) {
+    return (<div className={className}>{children}</div>)
 }

@@ -14,11 +14,9 @@ function PreviewContact () {
     )
 }
 
-function CreateSection(inputsArg, sectionClassArg, previewAreaArg) {
+function CreateSection(inputsArg, previewAreaArg) {
     inputsArg.forEach(input => {
-        const section = document.createElement('div')
-        section.className(`${sectionClassArg}`)
-        section.innerText = input
+        const section = <div className='sectionClassArg'>{input}</div>
         previewAreaArg.appendChild(section)
     })
 }

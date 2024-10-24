@@ -1,0 +1,36 @@
+.jobGrid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 2fr 8fr;
+}
+
+.practicalExp {
+    grid-column: 1;
+    grid-row: 1;
+    justify-self: center;
+    font-size: 25px;
+    height: fit-content;
+    width: fit-content;
+}
+
+.addJob {
+    grid-column: 2;
+    grid-row: 1;
+    justify-self: center;
+    height: 70%;
+    width: 25%;
+}
+
+.jobAreaGridChild {
+    grid-column: 1 / span 2;
+    grid-row: 2;
+}
+
+.jobArea {
+    display: grid;
+}
+
+.jobInfo {
+    display: flex;
+    justify-content: space-evenly;
+}

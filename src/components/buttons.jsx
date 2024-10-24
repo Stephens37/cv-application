@@ -76,12 +76,12 @@ export default function Button() {
     }
 
     return (
-        <>
+        <div className='mainGrid'>
             <MainArea className='mainAreaComp'>
                 {info === 'input' ? <InputModules /> : <Preview />}
             </MainArea>
             <button className='buttonComp' onClick={changeDisplay}>{buttonText}</button>
-        </>
+        </div>
     );
 }
 

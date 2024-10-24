@@ -70,10 +70,12 @@ function AddNew () {
 
 export default function JobSection () {
     return (
-        <>
+        <div className='jobGrid'>
             <div className='practicalExp'>Practical Experience</div>
             <AddNew></AddNew>
-            <JobArea></JobArea>
-        </>
+            <div className='jobAreaGridChild'>
+                <JobArea></JobArea>
+            </div>
+        </div>
     )
 } 

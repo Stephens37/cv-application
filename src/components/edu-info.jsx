@@ -60,10 +60,12 @@ function AddNew () {
 
 export default function EduSection () {
     return (
-        <>
-            <div className='practicalExp'>Education</div>
+        <div className='eduGrid'>
+            <div className='eduExp'>Education</div>
             <AddNew></AddNew>
-            <EduArea></EduArea>
-        </>
+            <div className='eduAreaGridChild'>
+                <EduArea></EduArea>
+            </div>
+        </div>
     )
 } 

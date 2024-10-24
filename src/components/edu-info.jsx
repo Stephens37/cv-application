@@ -1,4 +1,5 @@
 import './edu-info.css'
+import { useState } from 'react'
 /*
     -instead of each EduInfo component containing static html
     *create all content in the JS DOM to add each element to an array
@@ -26,45 +27,26 @@ function EduInfo () {
     )
 }
 
-function EduArea () {
+function EduArea ({children}) {
     return (
-        <div className='eduArea'></div>
-    )
-}
-
-/*
-    const eduInfoArr = [dip1, dip2, ...]
-    function addPart () {
-        all info.remove
-        for (let i = 0; i < eduInfoArr.length; i++)  {
-        if(eduInfoArr[i]).style.gridrow = i {
-            continue loop
-        } else {
-            eduInfoArr[i].style.gridrow = i
-         }
-    }
-*/
-
-function AddNew () {
-    
-    const handleClick = () => {
-        document.querySelector('.eduArea').appendChild(EduInfo)
-    }
-    
-    return (
-        <>
-            <button className='addDegree' onClick={handleClick}>Add Degree</button>
-        </>
+        <div className='eduArea'>
+            {children}
+        </div>
     )
 }
 
 export default function EduSection () {
+    const [eduInfoList, setEduInfoList] = useState([])
+    const handleClick = () => {
+        console.log(eduInfoList.value)
+        setEduInfoList([...eduInfoList, <EduInfo key={eduInfoList.value} />])
+    }
     return (
         <div className='eduGrid'>
             <div className='eduExp'>Education</div>
-            <AddNew></AddNew>
+            <button className='addDegree' onClick={handleClick}>Add Degree</button>
             <div className='eduAreaGridChild'>
-                <EduArea></EduArea>
+                <EduArea>{eduInfoList}</EduArea>
             </div>
         </div>
     )

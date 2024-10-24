@@ -3,6 +3,7 @@ import './contact-info.jsx'
 import './edu-info.jsx'
 import './job-info.jsx'
 import './preview.css'
+import { useState } from 'react'
 
 function PreviewContact () {
     return (
@@ -65,10 +66,12 @@ export function gatherInputs () {
         { inputs: startTimeInput, sectionClass: '.startTimePrevElement', previewArea: '.startTimePreview' },
         { inputs: endTimeInput, sectionClass: '.endTimePrevElement', previewArea: '.endTimePreview' },
     ]
-
-    inputData.forEach(({inputs, sectionClass, previewArea}) => {
-        CreateSection(inputs, sectionClass, previewArea)
-    })
+    function createSection() {
+        const [curInput, setCurInput] = useState(inputData[0])
+        inputData.forEach(({inputs, previewArea}) => {
+            
+        })
+    }
 }
 
 

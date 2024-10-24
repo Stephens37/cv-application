@@ -1,4 +1,5 @@
 import './job-info.css'
+import { useState } from 'react'
 
 function TimeWorked () {
     return (
@@ -49,32 +50,25 @@ function JobInfo () {
     )
 }
 
-function JobArea () {
+function JobArea ({children}) {
     return (
-        <div className='jobArea'></div>
-    )
-}
-
-function AddNew () {
-    
-    const handleClick = () => {
-        document.querySelector('.jobArea').appendChild(JobInfo)
-    }
-    
-    return (
-        <>
-            <button className='addJob' onClick={handleClick}>Add Job</button>
-        </>
+        <div className='jobArea'>
+            {children}
+        </div>
     )
 }
 
 export default function JobSection () {
+    const [jobInfoList, setJobInfoList] = useState([])
+    const handleClick = () => {
+        setNewJobInfo([...jobInfoList, <JobInfo key={jobInfoList.value} />])
+    }
     return (
         <div className='jobGrid'>
             <div className='practicalExp'>Practical Experience</div>
-            <AddNew></AddNew>
+            <button className='addPosition' onClick={handleClick}>Add Position</button>
             <div className='jobAreaGridChild'>
-                <JobArea></JobArea>
+                <JobArea>{jobInfoList}</JobArea>
             </div>
         </div>
     )

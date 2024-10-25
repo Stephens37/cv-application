@@ -23,29 +23,27 @@ function TimeWorked () {
         </>
     )
 }
+
+function JobTitles () {
+    return (
+        <>
+            <div className='jobInputTitle company companyTitle'>Company</div>
+            <div className='jobInputTitle position positionTitle'>Position Title</div>
+            <div className='jobInputTitle responsibilities respTitle'>Main Responsibilities</div>
+            <div className='jobInputTitle timeWorked startTitle'>Start Date</div>
+            <div className='jobInputTitle timeWorked endTitle'>End Date</div>
+        </>
+    )
+}
+
 function JobInfo () {
     return (
         <div className='jobInfo'>
-            <div className='inputContainer'>
-                <div className='inputTitle company companyTitle'>Company</div>
-                <input type='text' className='company companyInput jobInput'></input>
-            </div>
-            <div className='inputContainer'>
-                <div className='inputTitle position positionTitle'>Position Title</div>
-                <input type='text' className='position positionInput jobInput'></input>
-            </div>
-            <div className='inputContainer'>
-                <div className='inputTitle responsibilities respTitle'>Main Responsibilities</div>
-                <input type='text' className='responsibilities respInput jobInput'></input>
-            </div>
-            <div className='inputContainer timeWorkedGrid'>
-                <div className='startDateGrid'>
-                    <div className='inputTitle timeWorked startTitle'>Start Date</div>
-                    <TimeWorked className='timeWorked startTime jobInput startTimeInput'></TimeWorked>
-                    <div className='inputTitle timeWorked endTitle'>End Date</div>
-                    <TimeWorked className='timeWorked endTime jobInput endTimeInput'></TimeWorked>
-                </div>
-            </div>
+            <input type='text' className='company companyInput jobInput'></input>
+            <input type='text' className='position positionInput jobInput'></input>
+            <input type='text' className='responsibilities respInput jobInput'></input>
+            <TimeWorked className='timeWorked startTime jobInput startTimeInput'></TimeWorked>
+            <TimeWorked className='timeWorked endTime jobInput endTimeInput'></TimeWorked>
         </div>
     )
 }
@@ -63,19 +61,29 @@ function JobArea ({children}) {
 */
 
 export default function JobSection () {
+    const styles = {
+        dontDisplayTitles: {
+            display: 'none'
+        }
+    }
     const [jobInfoList, setJobInfoList] = useState([])
+    const [titleDisplay, setTitleDisplay] = useState(<div className='noDisplay' style={styles.dontDisplayTitles}></div>)
     const generateKey = (pre) => {
         return `${pre}_${new Date().getTime()}`
     }
     const handleClick = () => {
         setJobInfoList([...jobInfoList, <JobInfo key={generateKey('job')} />])
+        setTitleDisplay(<JobTitles></JobTitles>)
     }
     return (
         <div className='jobGrid'>
             <div className='practicalExp'>Practical Experience</div>
             <button className='addPosition' onClick={handleClick}>Add Position</button>
             <div className='jobAreaGridChild'>
-                <JobArea>{jobInfoList}</JobArea>
+                <JobArea>
+                    {titleDisplay}
+                    {jobInfoList}
+                </JobArea>
             </div>
         </div>
     )

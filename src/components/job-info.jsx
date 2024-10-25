@@ -58,10 +58,17 @@ function JobArea ({children}) {
     )
 }
 
+/*
+    - using the company title 
+*/
+
 export default function JobSection () {
     const [jobInfoList, setJobInfoList] = useState([])
+    const generateKey = (pre) => {
+        return `${pre}_${new Date().getTime()}`
+    }
     const handleClick = () => {
-        setNewJobInfo([...jobInfoList, <JobInfo key={jobInfoList.value} />])
+        setJobInfoList([...jobInfoList, <JobInfo key={generateKey('job')} />])
     }
     return (
         <div className='jobGrid'>

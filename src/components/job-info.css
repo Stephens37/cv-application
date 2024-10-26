@@ -1,7 +1,7 @@
 .jobGrid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    grid-template-rows: 2fr 8fr;
+    grid-template-rows: 3fr 8fr;
 }
 
 .practicalExp {
@@ -28,9 +28,32 @@
 
 .jobArea {
     display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(4, 1fr);
 }
 
-.jobInfo {
+.jobInputTitle {
+    justify-self: center;
+}
+
+.jobInput {
+    justify-self: center;
+    height: fit-content;
+    width: 50%;
+}
+
+.timeWorkedFlex {
     display: flex;
-    justify-content: space-evenly;
+    justify-content: center;
+    gap: 20px;
+}
+
+.month {
+    height: 25px;
+    width: 30%;
+}
+
+.year {
+    height: 20px;
+    width: 30%;
 }

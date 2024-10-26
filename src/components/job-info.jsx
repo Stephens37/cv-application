@@ -3,9 +3,9 @@ import { useState } from 'react'
 
 function TimeWorked () {
     return (
-        <>
-            <label htmlFor='time-worked'></label>
-            <select name='time-worked' className='timeWorked'>
+        <div className='timeWorkedFlex'>
+            <label htmlFor='monthWorked'></label>
+            <select name='monthWorked' className='month'>
             <option value='january'>January</option>
             <option value='february'>February</option>
             <option value='march'>March</option>
@@ -19,8 +19,9 @@ function TimeWorked () {
             <option value='november'>November</option>
             <option value='december'>December</option>
             </select>
+            <label htmlFor="year"></label>
             <input type='text' className='year'/>
-        </>
+        </div>
     )
 }
 
@@ -38,13 +39,13 @@ function JobTitles () {
 
 function JobInfo () {
     return (
-        <div className='jobInfo'>
+        <>
             <input type='text' className='company companyInput jobInput'></input>
             <input type='text' className='position positionInput jobInput'></input>
             <input type='text' className='responsibilities respInput jobInput'></input>
             <TimeWorked className='timeWorked startTime jobInput startTimeInput'></TimeWorked>
             <TimeWorked className='timeWorked endTime jobInput endTimeInput'></TimeWorked>
-        </div>
+        </>
     )
 }
 

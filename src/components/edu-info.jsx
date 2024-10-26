@@ -1,31 +1,23 @@
 import './edu-info.css'
 import { useState } from 'react'
-/*
-    -instead of each EduInfo component containing static html
-    *create all content in the JS DOM to add each element to an array
-    - this array will be parsed through in the Preview module
-    - each dev element will be created with the CreateSection factory function
-    - all info will lay itself out within grid containers
-    by having the class of each section be within a grid-column
-*/
 
 function EduTitles () {
     return (
         <>
             <div className='eduInputTitle school schoolTitle'>School</div>
             <div className='eduInputTitle degree degreeTitle'>Degree</div>
-            <div className='eduInputTitle year yearTitle'>Year Graduated</div>
+            <div className='eduInputTitle yearTitle'>Year Graduated</div>
         </>
     )
 }
 
 function EduInfo () {
     return (
-    <div className='eduInfo'>
+    <>
         <input type='text' className='school schoolInput eduInput'></input>
         <input type='text' className='degree degreeInput eduInput'></input>
-        <input type='text' className='year yearInput eduInput'></input>
-    </div>
+        <input type='text' className='yearInput eduInput'></input>
+    </>
     )
 }
 
@@ -36,15 +28,6 @@ function EduArea ({children}) {
         </div>
     )
 }
-
-/*
-    function DisplayTitles () {
-    const [prev, new] = useState(nodisplay)
-    const displayGrid = () => {
-            new(display)
-        }
-    }
-*/
 
 export default function EduSection () {
     const styles = {

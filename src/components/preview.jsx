@@ -15,9 +15,11 @@ function PreviewContact () {
     )
 }
 
-function CreateSection(inputsArg, previewAreaArg) {
+function createSection(inputsArg, sectionClassArg, previewAreaArg) {
     inputsArg.forEach(input => {
-        const section = <div className='sectionClassArg'>{input}</div>
+        const section = document.createElement('div')
+        section.className(`${sectionClassArg}`)
+        section.innerText = input
         previewAreaArg.appendChild(section)
     })
 }
@@ -66,12 +68,9 @@ export function gatherInputs () {
         { inputs: startTimeInput, sectionClass: '.startTimePrevElement', previewArea: '.startTimePreview' },
         { inputs: endTimeInput, sectionClass: '.endTimePrevElement', previewArea: '.endTimePreview' },
     ]
-    function createSection() {
-        const [curInput, setCurInput] = useState(inputData[0])
-        inputData.forEach(({inputs, previewArea}) => {
-            
-        })
-    }
+    inputData.forEach(({inputs, sectionClass, previewArea}) => {
+        createSection(inputs, sectionClass, previewArea)
+    })
 }
 
 
@@ -85,3 +84,18 @@ export default function Preview () {
         </>
     )
 }
+
+/*
+    - instead of making a completely different module for the preview section, keep everything within the input-modules in place
+    - use a useState function to convert the input values into a divs innerText
+    const [valueState, setValueState] = useState(input)
+    if ()
+    setValueState(<div>{input.value}</div>)
+
+    - trying to access the 'input' or 'preview' text which the changeDisplay function works off of will not work
+    - this is because if I wanted to change each input to a div I would need to 
+*/
+
+/*
+    use a prop to change how preview/input is shown
+*/

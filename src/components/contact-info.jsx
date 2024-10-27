@@ -1,6 +1,9 @@
 import './contact-info.css'
+import { useState } from 'react'
 
-export default function ContactInfo () {
+export default function ContactInfo ({inputOrPrev}) {
+    let inputVariable = <input type='text' className='contactInput'></input>
+    let divVariable = <div className='contactDiv'>{inputVariable.value}</div>
     return (
         <div class='contactInfoGrid'>
             <div className='contactInfoHeader'>Contact Info</div>
@@ -8,15 +11,15 @@ export default function ContactInfo () {
                 <div className='basicInfo'>
                     <div className='contactContainer'>
                         <div className='contactTitle nameTitle'>Name</div>
-                        <input type='text' className='contactInput nameInput'></input>
+                         {inputOrPrev === 'preview' ? divVariable : inputVariable}
                     </div>
                     <div className='contactContainer'>
                         <div className='contactTitle emailTitle'>Email</div>
-                        <input type='text' className='contactInput emailInput'></input>
+                        {inputOrPrev === 'preview' ? divVariable : inputVariable}
                     </div>
                     <div className='contactContainer'>
                         <div className='contactTitle numberTitle'>Number</div>
-                        <input type='text' className='contactInput numberInput'></input>
+                        {inputOrPrev === 'preview' ? divVariable : inputVariable}
                     </div>
                 </div>
             </div>

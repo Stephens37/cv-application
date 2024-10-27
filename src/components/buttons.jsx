@@ -1,8 +1,9 @@
 import { useState } from 'react'
 import './buttons.css'
 import MainArea from './main-area.jsx'
-import InputModules from './input-modules.jsx'
-import Preview from './preview.jsx'
+import ContactInfo from './contact-info.jsx'
+import EduSection from './edu-info.jsx'
+import JobSection from './job-info.jsx'
 
 export default function Button() {
     const [info, setInfo] = useState('input')
@@ -20,9 +21,10 @@ export default function Button() {
 
     return (
         <div className='mainGrid'>
-            <MainArea className='mainAreaComp'>
-                {info === 'input' ? <InputModules /> : <Preview />}
-            </MainArea>
+            <div className='inputTitle'>Resume</div>
+            <div className='inputDescription'>Fill out this form and click submit when you're ready to send it.</div>
+            <ContactInfo className='contactInfoComp'
+            inputOrPrev={info}></ContactInfo>
             <button className='buttonComp' onClick={changeDisplay}>{buttonText}</button>
         </div>
     );

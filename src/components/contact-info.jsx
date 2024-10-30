@@ -1,6 +1,20 @@
 import './contact-info.css'
+import { useState, useRef } from 'react'
 
-export default function ContactInfo () {
+/*
+    how do I separate the changing of each div value
+*/
+
+
+export default function ContactInfo ({inputOrPrev}) {
+    const [nameValue, setNameValue] = useState('')
+    const [emailValue, setEmailValue] = useState('')
+    const [numberValue, setNumberValue] = useState('')
+
+    const handleInputChange = (stateValue, event) => {
+        stateValue(event.target.value)
+    }
+
     return (
         <div class='contactInfoGrid'>
             <div className='contactInfoHeader'>Contact Info</div>
@@ -8,15 +22,24 @@ export default function ContactInfo () {
                 <div className='basicInfo'>
                     <div className='contactContainer'>
                         <div className='contactTitle nameTitle'>Name</div>
-                        <input type='text' className='contactInput nameInput'></input>
+                         {inputOrPrev === 'preview' ? <div className='contactDiv'>{nameValue}</div>  : <input type='text'
+                className='contactInput'
+                value={nameValue}
+                onChange={(event) => handleInputChange(setNameValue, event)}/>}
                     </div>
                     <div className='contactContainer'>
                         <div className='contactTitle emailTitle'>Email</div>
-                        <input type='text' className='contactInput emailInput'></input>
+                        {inputOrPrev === 'preview' ? <div className='contactDiv'>{emailValue}</div> : <input type='text'
+                className='contactInput'
+                value={emailValue}
+                onChange={(event) => handleInputChange(setEmailValue, event)}/>}
                     </div>
                     <div className='contactContainer'>
                         <div className='contactTitle numberTitle'>Number</div>
-                        <input type='text' className='contactInput numberInput'></input>
+                        {inputOrPrev === 'preview' ? <div className='contactDiv'>{numberValue}</div> : <input type='text'
+                className='contactInput'
+                value={numberValue}
+                onChange={(event) => handleInputChange(setNumberValue, event)}/>}
                     </div>
                 </div>
             </div>

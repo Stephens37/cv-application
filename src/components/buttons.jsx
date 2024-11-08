@@ -25,6 +25,8 @@ export default function Button() {
             <div className='inputDescription'>Fill out this form and click submit when you're ready to send it.</div>
             <ContactInfo className='contactInfoComp'
             inputOrPrev={info}></ContactInfo>
+            <EduSection className='eduSectionComp' inputOrPrev={info}></EduSection>
+            <JobSection className='jobSectionComp' inputOrPrev={info}></JobSection>
             <button className='buttonComp' onClick={changeDisplay}>{buttonText}</button>
         </div>
     );

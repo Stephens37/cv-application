@@ -23,23 +23,23 @@ export default function ContactInfo ({inputOrPrev}) {
                     <div className='contactContainer'>
                         <div className='contactTitle nameTitle'>Name</div>
                          {inputOrPrev === 'preview' ? <div className='contactDiv'>{nameValue}</div>  : <input type='text'
-                className='contactInput'
-                value={nameValue}
-                onChange={(event) => handleInputChange(setNameValue, event)}/>}
+                            className='contactInput'
+                            value={nameValue}
+                            onChange={(event) => handleInputChange(setNameValue, event)}/>}
                     </div>
                     <div className='contactContainer'>
                         <div className='contactTitle emailTitle'>Email</div>
                         {inputOrPrev === 'preview' ? <div className='contactDiv'>{emailValue}</div> : <input type='text'
-                className='contactInput'
-                value={emailValue}
-                onChange={(event) => handleInputChange(setEmailValue, event)}/>}
+                            className='contactInput'
+                            value={emailValue}
+                            onChange={(event) => handleInputChange(setEmailValue, event)}/>}
                     </div>
                     <div className='contactContainer'>
                         <div className='contactTitle numberTitle'>Number</div>
                         {inputOrPrev === 'preview' ? <div className='contactDiv'>{numberValue}</div> : <input type='text'
-                className='contactInput'
-                value={numberValue}
-                onChange={(event) => handleInputChange(setNumberValue, event)}/>}
+                            className='contactInput'
+                            value={numberValue}
+                            onChange={(event) => handleInputChange(setNumberValue, event)}/>}
                     </div>
                 </div>
             </div>

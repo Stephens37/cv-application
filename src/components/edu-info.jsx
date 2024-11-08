@@ -46,12 +46,53 @@ function EduArea ({children}) {
 }
 
 export default function EduSection ({inputOrPrev}) {
-    const [eduInfoList, setEduInfoList] = useState([])
+    const [schoolValue, setSchoolValue] = useState('')
+    const [degreeValue, setDegreeValue] = useState('')
+    const [gradValue, setGradValue] = useState('')
+
+
+    function EduInputs () {
+        const handleInputChange = (stateValue, event) => {
+            stateValue(event.target.value)
+        }
+        return (
+            <>
+                <input type='text'
+                className='eduInfoDiv eduInput'
+                value={schoolValue}
+                onChange={(event) => handleInputChange(setSchoolValue, event)}/>
+
+                <input type='text'
+                className='eduInfoDiv eduInput'
+                value={degreeValue}
+                onChange={(event) => handleInputChange(setDegreeValue, event)}/>
+
+                <input type='text'
+                className='eduInfoDiv eduInput'
+                value={gradValue}
+                onChange={(event) => handleInputChange(setGradValue, event)}/>
+            </>
+        )
+    }
+
+    function EduPrev () {
+        return (
+            <>
+                <div className='eduInfoDiv eduText'>{schoolValue}</div>
+                <div className='eduInfoDiv eduText'>{degreeValue}</div>
+                <div className='eduInfoDiv eduText'>{gradValue}</div>
+            </>
+        )
+    }
+    const [eduInputList, setEduInputList] = useState([])
+    const [eduPrevList, setEduPrevList] = useState([])
+
     const generateKey = (pre) => {
         return `${pre}_${new Date().getTime()}`
     }
     const handleClick = () => {
-        setEduInfoList([...eduInfoList, <EduInfo key={generateKey('edu')} eleType={inputOrPrev}/>])
+        setEduInputList([...eduInputList, <EduInputs key={generateKey('eduInput')}/>])
+        setEduPrevList([...eduPrevList, <EduPrev key={generateKey('eduPrev')}/>])
     }
     
     return (
@@ -61,7 +102,7 @@ export default function EduSection ({inputOrPrev}) {
             <div className='eduAreaGridChild'>
                 <EduArea>
                     <EduTitles></EduTitles>
-                    {eduInfoList}
+                    {inputOrPrev === 'preview' ? eduPrevList : eduInputList}
                 </EduArea>
             </div>
         </div>

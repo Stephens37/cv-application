@@ -45,16 +45,23 @@ function EduArea ({children}) {
     )
 }
 
+/*
+    - if I use the state functions outside of the eduInputs component,
+    the value will not change until the next iteration of the component
+    - this may be because the state value is not able to be set readily until
+    called upon to be set in the next function because to set the state function 
+*/
+
 export default function EduSection ({inputOrPrev}) {
-    const [schoolValue, setSchoolValue] = useState('')
+
+    function EduInputs () {
+        const [schoolValue, setSchoolValue] = useState('')
     const [degreeValue, setDegreeValue] = useState('')
     const [gradValue, setGradValue] = useState('')
 
-
-    function EduInputs () {
-        const handleInputChange = (stateValue, event) => {
-            stateValue(event.target.value)
-        }
+    const handleInputChange = (stateValue, event) => {
+        stateValue(event.target.value)
+    }
         return (
             <>
                 <input type='text'

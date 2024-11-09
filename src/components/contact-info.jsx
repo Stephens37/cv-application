@@ -10,6 +10,7 @@ export default function ContactInfo ({inputOrPrev}) {
     const [nameValue, setNameValue] = useState('')
     const [emailValue, setEmailValue] = useState('')
     const [numberValue, setNumberValue] = useState('')
+    console.log('inputOrPrev in Contact Info:', inputOrPrev)
 
     const handleInputChange = (stateValue, event) => {
         stateValue(event.target.value)

@@ -13,6 +13,7 @@ export default function Button() {
         if (info === 'input') {
             setInfo('preview')
             setButtonText('Edit')
+            console.log('hi')
         } else {
             setInfo('input')
             setButtonText('Submit')

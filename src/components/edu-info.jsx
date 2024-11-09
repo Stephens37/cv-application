@@ -1,5 +1,6 @@
 import './edu-info.css'
 import { useState } from 'react'
+import React from 'react'
 
 function EduTitles () {
     return (
@@ -11,7 +12,7 @@ function EduTitles () {
     )
 }
 
-function EduInfo ({eleType}) {
+/*function EduInfo ({eleType}) {
     const [schoolValue, setSchoolValue] = useState('')
     const [degreeValue, setDegreeValue] = useState('')
     const [gradValue, setGradValue] = useState('')
@@ -35,7 +36,7 @@ function EduInfo ({eleType}) {
                 onChange={(event) => handleInputChange(setGradValue, event)}/>}
     </>
     )
-}
+}*/
 
 function EduArea ({children}) {
     return (
@@ -45,54 +46,60 @@ function EduArea ({children}) {
     )
 }
 
+/*
+    const [displayCat, setDisplayCat] = useState('input')
+    if(inputOrPrev === 'preview') {
+    setDisplayCat('preview')
+    } else {
+        setDisplayCat('input')
+    }
+
+
+*/
+
 export default function EduSection ({inputOrPrev}) {
-    const [schoolValue, setSchoolValue] = useState('')
-    const [degreeValue, setDegreeValue] = useState('')
-    const [gradValue, setGradValue] = useState('')
+    // EduInputs not receiving inputOrPrev as it's not being passed as a prop
+    // how to pass props from an outer function into an inner function
+    console.log('inputOrPrev in EduSection:', inputOrPrev)
+    const [displayCat, setDisplayCat] = useState('input')
+    //setDisplayCat(inputOrPrev)
+    //perhaps updating the state of inputOrPre
+    function EduInputs() {
+        console.log('inputOrPrev in EduInputs:', inputOrPrev)
+        const [schoolValue, setSchoolValue] = useState('')
+        const [degreeValue, setDegreeValue] = useState('')
+        const [gradValue, setGradValue] = useState('')
 
-
-    function EduInputs () {
         const handleInputChange = (stateValue, event) => {
             stateValue(event.target.value)
         }
+        console.log('bye')
+        
         return (
             <>
-                <input type='text'
+                {displayCat === 'preview' ? <div className='eduInfoDiv eduText'>{schoolValue}</div>  : <input type='text'
                 className='eduInfoDiv eduInput'
                 value={schoolValue}
-                onChange={(event) => handleInputChange(setSchoolValue, event)}/>
+                onChange={(event) => handleInputChange(setSchoolValue, event)}/>}
 
-                <input type='text'
+                {displayCat === 'preview' ? <div className='eduInfoDiv eduText'>{degreeValue}</div>  : <input type='text'
                 className='eduInfoDiv eduInput'
                 value={degreeValue}
-                onChange={(event) => handleInputChange(setDegreeValue, event)}/>
+                onChange={(event) => handleInputChange(setDegreeValue, event)}/>}
 
-                <input type='text'
+                {displayCat === 'preview' ? <div className='eduInfoDiv eduText'>{gradValue}</div>  : <input type='text'
                 className='eduInfoDiv eduInput'
                 value={gradValue}
-                onChange={(event) => handleInputChange(setGradValue, event)}/>
-            </>
-        )
-    }
-
-    function EduPrev () {
-        return (
-            <>
-                <div className='eduInfoDiv eduText'>{schoolValue}</div>
-                <div className='eduInfoDiv eduText'>{degreeValue}</div>
-                <div className='eduInfoDiv eduText'>{gradValue}</div>
+                onChange={(event) => handleInputChange(setGradValue, event)}/>}
             </>
         )
     }
     const [eduInputList, setEduInputList] = useState([])
-    const [eduPrevList, setEduPrevList] = useState([])
-
     const generateKey = (pre) => {
         return `${pre}_${new Date().getTime()}`
     }
     const handleClick = () => {
         setEduInputList([...eduInputList, <EduInputs key={generateKey('eduInput')}/>])
-        setEduPrevList([...eduPrevList, <EduPrev key={generateKey('eduPrev')}/>])
     }
     
     return (
@@ -102,7 +109,7 @@ export default function EduSection ({inputOrPrev}) {
             <div className='eduAreaGridChild'>
                 <EduArea>
                     <EduTitles></EduTitles>
-                    {inputOrPrev === 'preview' ? eduPrevList : eduInputList}
+                    {eduInputList}
                 </EduArea>
             </div>
         </div>
@@ -110,40 +117,35 @@ export default function EduSection ({inputOrPrev}) {
 }
 
 /*
-    - shift all input values to div text
-    - need to take into account there are multiple divs
-    - create an array with all the divs
-    - use all the current info, but simply replace the inputs in eduArea with the div logic
-    from the returned components in contact-info
-*/
+    first method:
+    - add three separate state methods for school, degree, and grad
+    - put two separate components in the main EduSection component
+    - one for inputs, the other for preview divs
+    
+    - the input component contains a function that handles the change of the input value
+    - this is used in the onChange property of the input divs
 
-/*
-    the inputOrPrev logic is not being dynamically retrieved from the buttons.jsx module
-    it is being set once when each new InfoArea component is being added through a state function to the eduInfoList
-    need to find a way to dynamically add each inputOrDiv component
-*/
+    - each input also shares the same eduInfoDiv class as the succeeding preview divs to allow for similar grid placements
 
-/*
-    - create two lists: one for the input elements, one for the div elements
-    - if inputOrPrev = prev, {eduDivList} and vice-versa
+    - each input's value is the first value in its respective useState array
 
-    - how do I get the input value if the inputs and divs are in two separate components
-    - grab the state functions and put those in the top level of the EduSection component
-    - create the two components
+    
+    - the preview divs are simply a div with the aforementioned eduInfoDiv class
+    - the value in-between the div tags is the first value in its respective useState array
 
-    function eduDivInfo () {
-        return (
-            <div>{schoolInfo}</div>
-        )
-    }
 
-    function eduInputInfo () {
-        return (
-            input value = {schoolValue}
-        )
-    }
+    - upon clicking the button to add new school info, each set of info is added to two lists: one for the inputs, and one for the preview divs
+    - these are also given a key however it is the same key for each iteration and this should be looked at if continuing with this method
 
-    then for the return in the EduSection
+    - the returned html code includes logic which chooses the type of list to be displayed depending on the value of inputOrPrev
 
-    <div className='listDiv'>{inputOrPrev="preview" ? eduDivInfo : eduInputInfo }</div>
+    Issues:
+    - the state logic having to be in the top level of EduSection to accomodate both components
+    - this is creating an issue in which the state is only updating on every new button click
+    - it is updating with the previous state
+    - the previous state is only updating once, so whichever letter was last typed appears in the next state
+    
+    - the inputs are changing to divs however, which goes to show that the latter part of the logic is working
+
+    - i currently need to have the state logic in the top section of EduSection or else my preview divs will not be able to access the values
 */

@@ -57,63 +57,115 @@ function EduArea ({children}) {
 
 */
 
-export default function EduSection ({inputOrPrev}) {
-    // EduInputs not receiving inputOrPrev as it's not being passed as a prop
-    // how to pass props from an outer function into an inner function
-    console.log('inputOrPrev in EduSection:', inputOrPrev)
-    const [displayCat, setDisplayCat] = useState('input')
-    //setDisplayCat(inputOrPrev)
-    //perhaps updating the state of inputOrPre
-    function EduInputs() {
-        console.log('inputOrPrev in EduInputs:', inputOrPrev)
-        const [schoolValue, setSchoolValue] = useState('')
-        const [degreeValue, setDegreeValue] = useState('')
-        const [gradValue, setGradValue] = useState('')
+/*
+    - inputOrPrev does change, but only upon the click of the Add Degree button
+    - the new div addition has the changed inputOrPrev
+    - there is no dynamic change of inputOrPrev in either the divs or inputs
 
-        const handleInputChange = (stateValue, event) => {
-            stateValue(event.target.value)
-        }
-        console.log('bye')
-        
-        return (
-            <>
-                {displayCat === 'preview' ? <div className='eduInfoDiv eduText'>{schoolValue}</div>  : <input type='text'
-                className='eduInfoDiv eduInput'
-                value={schoolValue}
-                onChange={(event) => handleInputChange(setSchoolValue, event)}/>}
+    - how do I change the function so that inputOrPrev is dynamically set?
+    - perhaps a state function...
+    - but a state function will only be triggered on the button click as well
 
-                {displayCat === 'preview' ? <div className='eduInfoDiv eduText'>{degreeValue}</div>  : <input type='text'
-                className='eduInfoDiv eduInput'
-                value={degreeValue}
-                onChange={(event) => handleInputChange(setDegreeValue, event)}/>}
-
-                {displayCat === 'preview' ? <div className='eduInfoDiv eduText'>{gradValue}</div>  : <input type='text'
-                className='eduInfoDiv eduInput'
-                value={gradValue}
-                onChange={(event) => handleInputChange(setGradValue, event)}/>}
-            </>
-        )
-    }
-    const [eduInputList, setEduInputList] = useState([])
-    const generateKey = (pre) => {
-        return `${pre}_${new Date().getTime()}`
-    }
-    const handleClick = () => {
-        setEduInputList([...eduInputList, <EduInputs key={generateKey('eduInput')}/>])
-    }
+    - the changed value of inputOrPrev is reaching the EduInputs component
+    - it is also reaching the returned inputs
+    - the returned inputs need to be dynamically able to read inputOrPrev
+    - but why would this be an issue, if the returned inputs are still
+    under the umbrella of the EduSection component
+    - the eduInputList created from the EduInputs is still under
+    the umbrella of EduSection, but I don't think that's what matters
     
+    - what I think is really happening is inputOrPrev is being returned once
+    and since the value is already returned it is never changed again
+    - I need to listen within the JSX element for any changes to inputOrPrev
+*/
+
+/*
+    - eduInputs is taking note that inputOrPrev is switching to preview, however the changes only reflect
+    after the add button clicked
+    - the value of inputOrPrev stays the same, never changes
+    - create state function that puts the updated state into EduInputs as a prop
+*/
+
+/*
+    - create two separate components for inputs and divs
+    - the input or div logic will be in the returned EduSection jsx elements
+    - 
+*/
+
+export default function EduSection({ inputOrPrev }) {
+
+    const [eduEntries, setEduEntries] = useState([])
+
+    const handleInputChange = (index, field, value) => {
+        setEduEntries((prevEntries) => {
+            const updatedEntries = [...prevEntries]
+            updatedEntries[index][field] = value
+            return updatedEntries
+        })
+    }
+
+    const handleClick = () => {
+        setEduEntries([...eduEntries, { schoolValue: '', degreeValue: '', gradValue: '' }])
+    }
+
     return (
         <div className='eduGrid'>
             <div className='eduExp'>Education</div>
             <button className='addDegree' onClick={handleClick}>Add Degree</button>
             <div className='eduAreaGridChild'>
                 <EduArea>
-                    <EduTitles></EduTitles>
-                    {eduInputList}
+                    {eduEntries.map((entry, index) => (
+                        <EduInputs
+                            key={index}
+                            entry={entry}
+                            index={index}
+                            inputOrPrev={inputOrPrev}
+                            onInputChange={handleInputChange}
+                        />
+                    ))}
                 </EduArea>
             </div>
         </div>
     )
+}
+
+function EduInputs({ entry, index, inputOrPrev, onInputChange }) {
+    return (
+        <>
+            {inputOrPrev === 'preview' ? (
+                <div className='eduInfoDiv eduText'>{entry.schoolValue}</div>
+            ) : (
+                <input
+                    type='text'
+                    className='eduInfoDiv eduInput'
+                    value={entry.schoolValue}
+                    onChange={(e) => onInputChange(index, 'schoolValue', e.target.value)}
+                />
+            )}
+
+            {inputOrPrev === 'preview' ? (
+                <div className='eduInfoDiv eduText'>{entry.degreeValue}</div>
+            ) : (
+                <input
+                    type='text'
+                    className='eduInfoDiv eduInput'
+                    value={entry.degreeValue}
+                    onChange={(e) => onInputChange(index, 'degreeValue', e.target.value)}
+                />
+            )}
+
+            {inputOrPrev === 'preview' ? (
+                <div className='eduInfoDiv eduText'>{entry.gradValue}</div>
+            ) : (
+                <input
+                    type='text'
+                    className='eduInfoDiv eduInput'
+                    value={entry.gradValue}
+                    onChange={(e) => onInputChange(index, 'gradValue', e.target.value)}
+                />
+            )}
+        </>
+    );
 }
 
 /*

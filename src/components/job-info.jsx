@@ -118,59 +118,73 @@ function JobInputs({ entry, index, inputOrPrev, onInputChange }) {
                     <label htmlFor='monthWorked'></label>
                     <select name='monthWorked'
                     className='month'
-                    value={entry.startMonthValue}>
-                    <option value='january'>January</option>
-                    <option value='february'>February</option>
-                    <option value='march'>March</option>
-                    <option value='april'>April</option>
-                    <option value='may'>May</option>
-                    <option value='june'>June</option>
-                    <option value='july'>July</option>
-                    <option value='august'>August</option>
-                    <option value='september'>September</option>
-                    <option value='october'>October</option>
-                    <option value='november'>November</option>
-                    <option value='december'>December</option>
+                    value={entry.startMonthValue}
+                    onChange={(e) => onInputChange(index, 'startMonthValue', e.target.value)}
+                    >
+                    <option value='January'>January</option>
+                    <option value='February'>February</option>
+                    <option value='March'>March</option>
+                    <option value='April'>April</option>
+                    <option value='May'>May</option>
+                    <option value='June'>June</option>
+                    <option value='July'>July</option>
+                    <option value='August'>August</option>
+                    <option value='September'>September</option>
+                    <option value='October'>October</option>
+                    <option value='November'>November</option>
+                    <option value='December'>December</option>
                     </select>
                     <label htmlFor="year"></label>
                     <input type='text'
                     className='year' 
                     value={entry.startYearValue}
-                    onChange={(e) => onInputChange(index, 'Value', e.target.value)}/>
+                    onChange={(e) => onInputChange(index, 'startYearValue', e.target.value)}
+                    />
                 </div>
             )}
             {inputOrPrev === 'preview' ? (
                 <div className='jobInfoDiv jobText timeWorkedFlex'>
                     <div className='endMonthDiv'>{entry.endMonthValue}</div>
-                    <div className='endYearDIv'>{entry.endYearValue}</div>
+                    <div className='endYearDiv'>{entry.endYearValue}</div>
                 </div>
             ) : (
                 <div className='timeWorkedFlex'>
                     <label htmlFor='monthWorked'></label>
                     <select name='monthWorked'
                     className='month'
-                    value={entry.endMonthValue}>
-                    <option value='january'>January</option>
-                    <option value='february'>February</option>
-                    <option value='march'>March</option>
-                    <option value='april'>April</option>
-                    <option value='may'>May</option>
-                    <option value='june'>June</option>
-                    <option value='july'>July</option>
-                    <option value='august'>August</option>
-                    <option value='september'>September</option>
-                    <option value='october'>October</option>
-                    <option value='november'>November</option>
-                    <option value='december'>December</option>
+                    value={entry.endMonthValue}
+                    onChange={(e) => onInputChange(index, 'endMonthValue', e.target.value)}>
+                    <option value='January'>January</option>
+                    <option value='February'>February</option>
+                    <option value='March'>March</option>
+                    <option value='April'>April</option>
+                    <option value='May'>May</option>
+                    <option value='June'>June</option>
+                    <option value='July'>July</option>
+                    <option value='August'>August</option>
+                    <option value='September'>September</option>
+                    <option value='October'>October</option>
+                    <option value='November'>November</option>
+                    <option value='December'>December</option>
                     </select>
                     <label htmlFor="year"></label>
                     <input type='text'
                     className='year' 
-                    value={entry.startDateValue}
-                    onChange={(e) => onInputChange(index, 'Value', e.target.value)}/>
+                    value={entry.endYearValue}
+                    onChange={(e) => onInputChange(index, 'endYearValue', e.target.value)}
+                    />
                 </div>
             )}
 
         </>
     );
 }
+
+/*
+    - i want to access the value of whichever option is currently clicked in the dropdown menu
+
+    - access the value
+    - display it in a div
+
+    - access the 
+*/

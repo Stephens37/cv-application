@@ -22,8 +22,8 @@ export default function Button() {
 
     return (
         <div className='mainGrid'>
-            <div className='inputTitle'>Resume</div>
-            <div className='inputDescription'>Fill out this form and click submit when you're ready to send it.</div>
+            <div className='mainTitle'>Resume</div>
+            <div className='mainDescription'>Fill out this form and click submit when you're ready to send it.</div>
             <ContactInfo className='contactInfoComp'
             inputOrPrev={info}></ContactInfo>
             <EduSection className='eduSectionComp' inputOrPrev={info}></EduSection>

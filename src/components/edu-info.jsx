@@ -19,23 +19,25 @@ export default function EduSection({ inputOrPrev }) {
     }
 
     return (
-        <div className='eduGrid'>
-            <div className='eduExp'>Education</div>
-            <button className='addDegree' onClick={handleClick}>Add Degree</button>
-            <div className='eduAreaGridChild'>
-                <div className='eduArea'>
-                    <div className='eduInputTitle school schoolTitle'>School</div>
-                    <div className='eduInputTitle degree degreeTitle'>Degree</div>
-                    <div className='eduInputTitle yearTitle'>Year Graduated</div>
-                    {eduEntries.map((entry, index) => (
-                        <EduInputs
-                            key={index}
-                            entry={entry}
-                            index={index}
-                            inputOrPrev={inputOrPrev}
-                            onInputChange={handleInputChange}
-                        />
-                    ))}
+        <div className='eduMainGridChild'>
+            <div className='eduGrid'>
+                <div className='eduExp'>Education</div>
+                <button className='addDegree' onClick={handleClick}>Add Degree</button>
+                <div className='eduAreaGridChild'>
+                    <div className='eduArea'>
+                        <div className='eduTitle'>School</div>
+                        <div className='eduTitle'>Degree</div>
+                        <div className='eduTitle'>Year Graduated</div>
+                        {eduEntries.map((entry, index) => (
+                            <EduInputs
+                                key={index}
+                                entry={entry}
+                                index={index}
+                                inputOrPrev={inputOrPrev}
+                                onInputChange={handleInputChange}
+                            />
+                        ))}
+                    </div>
                 </div>
             </div>
         </div>
@@ -46,18 +48,18 @@ function EduInputs({ entry, index, inputOrPrev, onInputChange }) {
     return (
         <>
             {inputOrPrev === 'preview' ? (
-                <div className='eduInfoDiv eduText'>{entry.schoolValue}</div>
+                <div className='eduInfoDiv generalDiv'>{entry.schoolValue}</div>
             ) : (
                 <input
                     type='text'
-                    className='eduInfoDiv eduInput'
+                    className='eduInfoDiv'
                     value={entry.schoolValue}
                     onChange={(e) => onInputChange(index, 'schoolValue', e.target.value)}
                 />
             )}
 
             {inputOrPrev === 'preview' ? (
-                <div className='eduInfoDiv eduText'>{entry.degreeValue}</div>
+                <div className='eduInfoDiv generalDiv'>{entry.degreeValue}</div>
             ) : (
                 <input
                     type='text'
@@ -68,7 +70,7 @@ function EduInputs({ entry, index, inputOrPrev, onInputChange }) {
             )}
 
             {inputOrPrev === 'preview' ? (
-                <div className='eduInfoDiv eduText'>{entry.gradValue}</div>
+                <div className='eduInfoDiv eduText generalDiv'>{entry.gradValue}</div>
             ) : (
                 <input
                     type='text'

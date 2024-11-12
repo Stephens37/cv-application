@@ -4,7 +4,7 @@
     grid-template-rows: 3fr 8fr;
 }
 
-.practicalExp {
+.jobExp {
     grid-column: 1;
     grid-row: 1;
     justify-self: center;

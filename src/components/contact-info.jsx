@@ -17,30 +17,32 @@ export default function ContactInfo ({inputOrPrev}) {
     }
 
     return (
-        <div class='contactInfoGrid'>
-            <div className='contactInfoHeader'>Contact Info</div>
-            <div className='basicInfoGridChild'>
-                <div className='basicInfo'>
-                    <div className='contactContainer'>
-                        <div className='contactTitle nameTitle'>Name</div>
-                         {inputOrPrev === 'preview' ? <div className='contactDiv'>{nameValue}</div>  : <input type='text'
-                            className='contactInput'
-                            value={nameValue}
-                            onChange={(event) => handleInputChange(setNameValue, event)}/>}
-                    </div>
-                    <div className='contactContainer'>
-                        <div className='contactTitle emailTitle'>Email</div>
-                        {inputOrPrev === 'preview' ? <div className='contactDiv'>{emailValue}</div> : <input type='text'
-                            className='contactInput'
-                            value={emailValue}
-                            onChange={(event) => handleInputChange(setEmailValue, event)}/>}
-                    </div>
-                    <div className='contactContainer'>
-                        <div className='contactTitle numberTitle'>Number</div>
-                        {inputOrPrev === 'preview' ? <div className='contactDiv'>{numberValue}</div> : <input type='text'
-                            className='contactInput'
-                            value={numberValue}
-                            onChange={(event) => handleInputChange(setNumberValue, event)}/>}
+        <div className='contactMainGridChild'>
+            <div class='contactInfoGrid'>
+                <div className='contactInfoHeader'>Contact Info</div>
+                <div className='basicInfoGridChild'>
+                    <div className='basicInfo'>
+                        <div className='contactContainer'>
+                            <div className='contactTitle nameTitle'>Name</div>
+                            {inputOrPrev === 'preview' ? <div className='contactDiv generalDiv'>{nameValue}</div>  : <input type='text'
+                                className='contactInput'
+                                value={nameValue}
+                                onChange={(event) => handleInputChange(setNameValue, event)}/>}
+                        </div>
+                        <div className='contactContainer'>
+                            <div className='contactTitle emailTitle'>Email</div>
+                            {inputOrPrev === 'preview' ? <div className='contactDiv generalDiv'>{emailValue}</div> : <input type='text'
+                                className='contactInput'
+                                value={emailValue}
+                                onChange={(event) => handleInputChange(setEmailValue, event)}/>}
+                        </div>
+                        <div className='contactContainer'>
+                            <div className='contactTitle numberTitle'>Number</div>
+                            {inputOrPrev === 'preview' ? <div className='contactDiv generalDiv'>{numberValue}</div> : <input type='text'
+                                className='contactInput'
+                                value={numberValue}
+                                onChange={(event) => handleInputChange(setNumberValue, event)}/>}
+                        </div>
                     </div>
                 </div>
             </div>

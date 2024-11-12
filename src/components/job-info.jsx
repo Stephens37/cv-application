@@ -20,11 +20,12 @@ export default function JobSection({ inputOrPrev }) {
     }
 
     return (
-        <div className='eduGrid'>
-            <div className='eduExp'>Practical Experience</div>
-            <button className='addDegree' onClick={handleClick}>Add Position</button>
-            <div className='eduAreaGridChild'>
-                <div className='eduArea'>
+        <div className='jobMainGridChild'>
+            <div className='jobGrid'>
+            <div className='jobExp'>Practical Experience</div>
+            <button className='addPosition' onClick={handleClick}>Add Position</button>
+            <div className='jobAreaGridChild'>
+                <div className='jobArea'>
                 <div className='jobInputTitle company companyTitle'>Company</div>
                 <div className='jobInputTitle position positionTitle'>Position Title</div>
                 <div className='jobInputTitle responsibilities respTitle'>Main Responsibilities</div>
@@ -41,6 +42,7 @@ export default function JobSection({ inputOrPrev }) {
                     ))}
                 </div>
             </div>
+        </div>
         </div>
     )
 }
@@ -76,7 +78,7 @@ function JobInputs({ entry, index, inputOrPrev, onInputChange }) {
     return (
         <>
             {inputOrPrev === 'preview' ? (
-                <div className='jobInfoDiv jobText'>{entry.companyValue}</div>
+                <div className='jobInfoDiv jobText generalDiv'>{entry.companyValue}</div>
             ) : (
                 <input
                     type='text'
@@ -87,7 +89,7 @@ function JobInputs({ entry, index, inputOrPrev, onInputChange }) {
             )}
 
             {inputOrPrev === 'preview' ? (
-                <div className='jobInfoDiv jobText'>{entry.positionValue}</div>
+                <div className='jobInfoDiv jobText generalDiv'>{entry.positionValue}</div>
             ) : (
                 <input
                     type='text'
@@ -98,7 +100,7 @@ function JobInputs({ entry, index, inputOrPrev, onInputChange }) {
             )}
 
             {inputOrPrev === 'preview' ? (
-                <div className='jobInfoDiv jobText'>{entry.respValue}</div>
+                <div className='jobInfoDiv jobText generalDiv'>{entry.respValue}</div>
             ) : (
                 <input
                     type='text'

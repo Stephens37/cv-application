@@ -34,13 +34,18 @@
     grid-template-rows: repeat(4, 1fr);
 }
 
-.eduInputTitle {
+.eduTitle {
+    grid-row: 1;
     justify-self: center;
+    align-self: center;
+    font-size: 20px;
+    height: fit-content;
+    width: fit-content;
 }
 
 .eduInfoDiv {
     justify-self: center;
     height: fit-content;
-    width: 50%;
+    width: fit-content;
 }
 

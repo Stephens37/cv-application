@@ -1,4 +1,4 @@
-import './edu-info.css'
+import '../styles/edu-info.css'
 import { useState } from 'react'
 import React from 'react'
 

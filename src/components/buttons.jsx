@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import './buttons.css'
+import '../styles/buttons.css'
 import MainArea from './main-area.jsx'
 import ContactInfo from './contact-info.jsx'
 import EduSection from './edu-info.jsx'

@@ -1,4 +1,4 @@
-import './job-info.css'
+import '../styles/job-info.css'
 import { useState } from 'react'
 
 export default function JobSection({ inputOrPrev }) {

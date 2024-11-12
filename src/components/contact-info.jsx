@@ -1,4 +1,4 @@
-import './contact-info.css'
+import '../styles/contact-info.css'
 import { useState, useRef } from 'react'
 
 /*
